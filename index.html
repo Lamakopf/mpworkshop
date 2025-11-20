@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unterrichtsideen – Medienpädagogik & KI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card-bg: #ffffff;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --border-soft: #e5e7eb;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.06);
+      --shadow-subtle: 0 4px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    p.lead {
+      margin-bottom: 24px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-icon {
+      font-size: 1.4rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .card-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-subtle);
+      transition: background 0.15s ease, transform 0.08s ease;
+    }
+
+    .btn:hover {
+      background: #1e40af;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      color: #111827;
+      text-decoration: underline;
+    }
+
+    .detail {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 24px 24px 28px 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-soft);
+      margin-top: 10px;
+    }
+
+    .detail h2 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .detail-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1e3a8a;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 12px;
+      margin-top: 8px;
+    }
+
+    .box {
+      border-radius: var(--radius-lg);
+      border: 1px solid #facc15;
+      background: #fffbeb;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    .box-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .box-title span.icon {
+      font-size: 1.2rem;
+    }
+
+    .box ol {
+      padding-left: 18px;
+      margin-top: 6px;
+    }
+
+    .box ol li + li {
+      margin-top: 4px;
+    }
+
+    .hint {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #fef3c7;
+      font-size: 0.9rem;
+      color: #92400e;
+    }
+
+    .section {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .section-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title span.icon {
+      font-size: 1.15rem;
+    }
+
+    .section ul {
+      margin-left: 18px;
+      margin-top: 4px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .section ul li + li {
+      margin-top: 4px;
+    }
+
+    .links-list {
+      list-style: disc;
+      margin-left: 18px;
+      margin-top: 4px;
+      font-size: 0.95rem;
+    }
+
+    .links-list li + li {
+      margin-top: 2px;
+    }
+
+    .links-list a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .links-list a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Kompetenzen-Stil */
+    .kompetenz-list {
+      margin-top: 8px;
+    }
+
+    .kompetenz-item {
+      margin-bottom: 10px;
+    }
+
+    .kompetenz-btn {
+      width: 100%;
+      text-align: left;
+      padding: 10px 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #1f2937;
+      transition: background 0.15s ease;
+    }
+
+    .kompetenz-btn:hover {
+      background: #f3f4f6;
+    }
+
+    .kompetenz-content {
+      padding: 10px 12px;
+      margin-top: 4px;
+      font-size: 0.9rem;
+      background: #f9fafb;
+      border-left: 3px solid #3b82f6;
+      border-radius: 6px;
+    }
+
+    /* Schritte 3–6 */
+    .step-intro {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .step-list {
+      margin-left: 18px;
+      margin-top: 4px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .step-list ul {
+      margin-left: 18px;
+      margin-top: 4px;
+    }
+
+    .step-list ol {
+      margin-left: 18px;
+      margin-top: 4px;
+    }
+
+    .step-list li + li {
+      margin-top: 6px;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 16px;
+      }
+      .detail {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Übersicht -->
+    <section id="overview">
+      <h1>Unterrichtsideen zu Medien &amp; KI – Gruppenarbeit</h1>
+      <p class="lead">
+        Wähle ein Themenfeld aus. Ihr plant in eurer Gruppe eine kurze
+        Unterrichtseinheit oder Aktion, die Schüler*innen hilft, Medien besser
+        zu verstehen.
+      </p>
+
+      <div class="grid">
+        <!-- Fake News -->
+        <article class="card" data-target="fake-news">
+          <div>
+            <div class="card-header">
+              <div class="card-icon">📢</div>
+              <div class="card-title">Fake News</div>
+            </div>
+            <p class="card-text">
+              Wie kannst du junge Menschen stärken, damit sie Falschmeldungen
+              besser erkennen und einordnen können?
+            </p>
+          </div>
+          <button class="btn open-topic" data-target="fake-news">
+            Thema öffnen
+          </button>
+        </article>
+
+        <!-- Schönheitsideale -->
+        <article class="card" data-target="beauty">
+          <div>
+            <div class="card-header">
+              <div class="card-icon">✨</div>
+              <div class="card-title">Schönheitsideale</div>
+            </div>
+            <p class="card-text">
+              Wie beeinflussen Filter, Likes und KI-optimierte Bilder das
+              Körperbild und die Wahrnehmung anderer?
+            </p>
+          </div>
+          <button class="btn open-topic" data-target="beauty">
+            Thema öffnen
+          </button>
+        </article>
+
+        <!-- Cybermobbing -->
+        <article class="card" data-target="cybermobbing">
+          <div>
+            <div class="card-header">
+              <div class="card-icon">💢</div>
+              <div class="card-title">Cybermobbing</div>
+            </div>
+            <p class="card-text">
+              Wie kannst du mit einer Klasse darüber arbeiten, was online verletzend ist
+              – und wie man sich schützen oder anderen helfen kann?
+            </p>
+          </div>
+          <button class="btn open-topic" data-target="cybermobbing">
+            Thema öffnen
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- Detail Fake News -->
+    <section id="detail-fake-news" class="detail hidden">
+      <button class="btn-secondary back-link" data-target="fake-news">
+        ← Zurück
+      </button>
+
+      <h2>Fake News</h2>
+      <p class="detail-subtitle">
+        Wie Falschmeldungen das Denken, Vertrauen und Handeln von Menschen
+        beeinflussen können – und wie du das im Unterricht erlebbar machen
+        kannst.
+      </p>
+
+      <!-- === ZIEL + KOMPETENZEN BLOCK === -->
+      <div class="badge">1. Ziel deiner Stunde</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🎯</span>
+          <span>Formuliere dein Ziel</span>
+        </div>
+        <p>
+          Schreibe in 1–2 kurzen Sätzen auf, was die Schüler*innen am Ende deiner
+          Stunde können oder verstanden haben sollen.
+        </p>
+        <p>Beispiele:</p>
+        <ul>
+          <li>„Die Schüler*innen erkennen typische Merkmale von Fake News.“</li>
+          <li>„Die Schüler*innen können einfache Fake News von echten Meldungen unterscheiden.“</li>
+          <li>„Die Schüler*innen wissen, wie sie eine Meldung kurz prüfen können.“</li>
+        </ul>
+      </div>
+
+      <div class="badge">2. Wichtige Kompetenzen</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🧠</span>
+          <span>Wähle 2–3 passende Kompetenzen aus</span>
+        </div>
+        <p>Klicke auf eine Kompetenz, um zu sehen, was sie bedeutet.</p>
+
+        <div class="kompetenz-list">
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Kritisches Denken</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, Informationen nicht einfach zu glauben, sondern zu prüfen,
+              zu vergleichen und bewusst zu hinterfragen.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Recherchekompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, Informationen zu suchen, passende Suchbegriffe zu wählen,
+              Quellen zu vergleichen und Fakten zu überprüfen.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Quellenkritik</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, einzuschätzen, ob eine Quelle glaubwürdig ist — anhand
+              von Autor*in, Datum, Ort, Belegen und Zweck des Inhalts.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Urteilsfähigkeit</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, eine eigene Position zu entwickeln, gut begründete
+              Entscheidungen zu treffen und Manipulation zu erkennen.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Ethische Medienreflexion</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, über die Wirkung von Medien nachzudenken und moralische
+              Fragen zu berücksichtigen: Fairness, Verantwortung, Folgen.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Emotionale Medienkompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, die eigenen Gefühle bei Mediennutzung zu verstehen — und
+              bewusst damit umzugehen (z. B. Druck, Vergleich, Angst).
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Ästhetische Medienkompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, Bilder und Inszenierungen zu analysieren — z. B. Filter,
+              KI-Bearbeitungen, Posen, Storytelling oder Dramatisierung.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Technische Grundkompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, grundlegende Funktionsweisen von Algorithmen,
+              Empfehlungssystemen oder KI-Modellen zu verstehen.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini-Bauplan Intro -->
+      <div class="badge">Mini-Bauplan für deine Stunde</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">✅</span>
+          <span>Dein Stundenbau mit Leitfragen</span>
+        </div>
+        <p class="step-intro">
+          Nutze die W-Fragen unten, um Einstieg, Hauptaktion, Austausch und Sicherung
+          bewusst zu planen. Die Fragen helfen dir, didaktische Entscheidungen zu begründen.
+        </p>
+      </div>
+
+      <!-- === SCHRITT 3: EINSTIEG – FAKE NEWS === -->
+      <div class="badge">3. Einstieg (ca. 5 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🎬</span>
+          <span>Einstieg planen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Die Klasse wird neugierig und merkt sofort, dass das Thema mit ihrem Alltag zu tun hat.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Wie willst du die Klasse ins Thema holen?</strong><br />
+            Denk daran: Ein kurzer, konkreter Einstieg (z. B. eine Meldung) schafft einen gemeinsamen Fokus.
+          </li>
+
+          <li>
+            <strong>Mit welchem Material knüpfst du an die Lebenswelt an?</strong><br />
+            Je näher das Material an echten Feeds ist, desto leichter erkennen sich die Schüler*innen wieder.
+          </li>
+
+          <li>
+            <strong>Welche Leitfrage stellst du gleich am Anfang – und warum?</strong><br />
+            Eine gute Leitfrage lenkt die Aufmerksamkeit auf das Wesentliche.
+          </li>
+
+          <li>
+            <strong>Wie machst du die Schüler*innen im Einstieg aktiv?</strong><br />
+            Aktivierung verhindert, dass der Einstieg zur Mini-Vorlesung wird.
+          </li>
+
+          <li>
+            <strong>Mit welchem Startsatz beginnst du – damit du nicht improvisieren musst?</strong><br />
+            Ein vorbereiteter Satz gibt dir Sicherheit und einen klaren Einstieg.
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 4: HAUPTAKTION – FAKE NEWS === -->
+      <div class="badge">4. Hauptaktion (ca. 20 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🧩</span>
+          <span>Hauptaktion planen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Die Schüler*innen arbeiten selbstständig mit Material – du strukturierst und sicherst.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>In welcher Sozialform sollen die Schüler*innen arbeiten – und warum?</strong><br />
+            Die Sozialform beeinflusst, wie viel Austausch und Sicherheit es gibt.
+            <ul>
+              <li>Einzelarbeit – wenn die Gruppe unsicher ist und Ruhe braucht?</li>
+              <li>Partnerarbeit – wenn du viel Austausch willst, aber überschaubar?</li>
+              <li>Kleingruppen – wenn die Klasse arbeitsfähig ist und du kollaborativ arbeiten möchtest?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Mit welchem Material sollen sie arbeiten?</strong><br />
+            Das Material entscheidet, wie konkret das Thema wird.
+            <ul>
+              <li>3–4 Meldungen (echte & ausgedachte) zum Vergleichen?</li>
+              <li>Bild-Posts, Screenshots, Schlagzeilen?</li>
+              <li>eine Aufgabe, selbst eine Fake-Meldung zu schreiben (um sie später zu enttarnen)?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Welche Aufgabe formulierst du in 1–2 klaren Sätzen?</strong><br />
+            Eine kurze, verständliche Aufgabe verhindert Missverständnisse.
+          </li>
+
+          <li>
+            <strong>Wie lautet der Arbeitsauftrag?</strong><br />
+            Kleine Schritte helfen auch schwächeren Schüler*innen, dranzubleiben.
+          </li>
+
+          <li>
+            <strong>Welche Rolle nimmst du während der Hauptphase ein – und warum?</strong><br />
+            Deine Rolle entscheidet, wie selbstständig die Klasse wirklich arbeitet.
+            <ul>
+              <li>Bewegst du dich im Raum und hörst Gespräche ab?</li>
+              <li>Stellst du eher Fragen („Was macht diese Meldung verdächtig?“) statt Lösungen zu geben?</li>
+              <li>Achtest du bewusst auf Zeit und Tempo, damit ihr sicher fertig werdet?</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 5: AUSTAUSCH & REFLEXION – FAKE NEWS === -->
+      <div class="badge">5. Austausch &amp; Reflexion (ca. 10 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">💬</span>
+          <span>Ergebnisse besprechen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Strategien sichtbar machen und gemeinsam nachdenken, was das für den Alltag bedeutet.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Wie sollen die Ergebnisse sichtbar werden?</strong><br />
+            Sichtbarkeit hilft, Muster zu erkennen und Gemeinsamkeiten zu sehen.
+            <ul>
+              <li>Stichworte an der Tafel (Spalten: „vertrauenswürdig / unsicher / fake“)?</li>
+              <li>Karten an der Wand, nach Kategorien sortiert?</li>
+              <li>Kurz-Statements aus den Gruppen („So sind wir vorgegangen …“)?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Mit welchen Leitfragen willst du das Gespräch steuern?</strong><br />
+            Gute Fragen verhindern, dass es bei „richtig/falsch“ stehenbleibt.
+            <ul>
+              <li>„Was hat euch überrascht?“</li>
+              <li>„Was war am schwersten zu entscheiden?“</li>
+              <li>„Welche Rolle haben Gefühle gespielt?“</li>
+              <li>„Welche Tricks von Fake News habt ihr entdeckt?“</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Wie strukturierst du die Gesprächsphase?</strong><br />
+            Eine klare Struktur verhindert, dass sich nur wenige melden.
+            <ul>
+              <li>Wer beginnt: eine freiwillige Gruppe oder eine, die du auswählst?</li>
+              <li>Wann sammelst du Fragen der Klasse?</li>
+              <li>Wann fasst du zentrale Strategien zusammen?</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 6: SICHERUNG & TRANSFER – FAKE NEWS === -->
+      <div class="badge">6. Sicherung &amp; Transfer (ca. 5 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">📌</span>
+          <span>Was bleibt hängen?</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Jede Person nimmt mindestens eine konkrete Strategie mit in den eigenen Feed-Alltag.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Welche Abschlussfrage stellst du, damit es persönlich wird?</strong><br />
+            Persönliche Fragen helfen, dass das Gelernte nicht „im Klassenzimmer bleibt“.
+          </li>
+
+
+      </div>
+
+      <!-- Themenspezifischer Auftrag + Denkanstöße -->
+      <div class="box">
+        <div class="box-title">
+          <span class="icon">🧩</span>
+          <span>Arbeitsauftrag (themenspezifisch)</span>
+        </div>
+        <p>
+          Entwickle mit deiner Gruppe eine Unterrichtsaktion, die zeigt,
+          <strong>wie Fake News entstehen und warum sie wirken.</strong>
+        </p>
+        <ol>
+          <li>Welche Situation aus dem Alltag der Schüler*innen willst du aufgreifen?</li>
+          <li>Welche Fake-Mechanismen willst du sichtbar machen (Clickbait, Angst, „Wir gegen die“)?</li>
+          <li>Welche 2–3 Prüf-Fragen sollen die Schüler*innen am Ende kennen?</li>
+        </ol>
+        <div class="hint">
+          Hinweis: Achte darauf, dass die Schüler*innen selbst denken,
+          entscheiden und diskutieren – nicht du erklärst alles.
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">💡</span>
+          <span>Denkanstöße für deinen Einstieg</span>
+        </div>
+        <ul>
+          <li>Ein Bild oder eine Schlagzeile kann stimmen – oder komplett erfunden sein.</li>
+          <li>Falschmeldungen nutzen starke Gefühle: Wut, Angst, Empörung.</li>
+          <li>Algorithmen verstärken Inhalte, die uns emotional treffen.</li>
+          <li>Jugendliche erleben täglich Informationsflut – Orientierung kostet Energie.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">📎</span>
+          <span>Links zu Arbeitsdokumenten</span>
+        </div>
+        <ul class="links-list">
+          <li>Arbeitsblatt „Fake News erkennen“ – <a href="#">Link</a></li>
+          <li>Mini-Quellencheck – <a href="#">Link</a></li>
+          <li>Tool-Sammlung Faktencheck – <a href="#">Link</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Detail Schönheitsideale -->
+    <section id="detail-beauty" class="detail hidden">
+      <button class="btn-secondary back-link" data-target="beauty">
+        ← Zurück
+      </button>
+
+      <h2>Schönheitsideale</h2>
+      <p class="detail-subtitle">
+        Wie Filter, Trends und KI-Bilder beeinflussen, wie Jugendliche sich
+        selbst sehen – und wie du das Thema sensibel im Unterricht bearbeiten
+        kannst.
+      </p>
+
+      <!-- === ZIEL + KOMPETENZEN BLOCK === -->
+      <div class="badge">1. Ziel deiner Stunde</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🎯</span>
+          <span>Formuliere dein Ziel</span>
+        </div>
+        <p>
+          Schreibe in 1–2 kurzen Sätzen auf, was die Schüler*innen am Ende deiner
+          Stunde können oder verstanden haben sollen.
+        </p>
+        <p>Beispiele:</p>
+        <ul>
+          <li>„Die Schüler*innen erkennen, wie stark Bilder bearbeitet sein können.“</li>
+          <li>„Die Schüler*innen können beschreiben, wie Filter ihre Gefühle verändern.“</li>
+          <li>„Die Schüler*innen kennen mindestens zwei Strategien für einen gesunden Umgang mit Bildern.“</li>
+        </ul>
+      </div>
+
+      <div class="badge">2. Wichtige Kompetenzen</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🧠</span>
+          <span>Wähle 2–3 passende Kompetenzen aus</span>
+        </div>
+        <p>Klicke auf eine Kompetenz, um zu sehen, was sie bedeutet.</p>
+
+        <div class="kompetenz-list">
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Kritisches Denken</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, Darstellungen des Körpers nicht einfach zu übernehmen,
+              sondern zu hinterfragen: „Ist das realistisch?“
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Emotionale Medienkompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, eigene Gefühle beim Scrollen zu bemerken und ernst zu nehmen –
+              z. B. Druck, Neid, Frust oder Bewunderung.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Ästhetische Medienkompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, Filter, Posen, Licht, Bearbeitung und Inszenierung in Bildern zu erkennen
+              und zu beschreiben.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Ethische Medienreflexion</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, über Schönheitsdruck und unrealistische Ideale nachzudenken:
+              Wem nützen sie, wem schaden sie?
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Technische Grundkompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, grundlegende Funktionen von Filtern, KI-Optimierungen und Bildbearbeitung zu verstehen.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini-Bauplan Intro -->
+      <div class="badge">Mini-Bauplan für deine Stunde</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">✅</span>
+          <span>Dein Stundenbau mit Leitfragen</span>
+        </div>
+        <p class="step-intro">
+          Die W-Fragen helfen dir, vom „Wir schauen mal ein paar Bilder an“
+          zu einer klar strukturierten Stunde mit Emotionen, Analyse und Schutzstrategien zu kommen.
+        </p>
+      </div>
+
+      <!-- === SCHRITT 3: EINSTIEG – BEAUTY === -->
+      <div class="badge">3. Einstieg (ca. 5 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🎬</span>
+          <span>Einstieg planen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Schüler*innen sollen merken: „Das hat direkt mit meinen Feeds und meinem Körperbild zu tun.“
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Mit welchem Bild- oder Video-Material willst du starten?</strong><br />
+            Das erste Bild entscheidet, ob die Klasse innerlich „andockt“.
+            <ul>
+              <li>Vorher-Nachher-Bild mit starkem Filter?</li>
+              <li>Collage aus typischen Insta-/TikTok-Posen?</li>
+              <li>kurzes Reel mit Glow-Up?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Welche Frage stellst du, damit die Schüler*innen ihre eigene Erfahrung aktivieren?</strong><br />
+            Eigene Erfahrungen sind der beste Zugang zu einem sensiblen Thema.
+            <ul>
+              <li>„Wie oft seht ihr solche Bilder in euren Feeds?“</li>
+              <li>„Wie fühlt ihr euch, wenn ihr so etwas seht?“</li>
+              <li>„Was denkt ihr: Wie echt ist das?“</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Wie willst du vermeiden, dass einzelne Personen bewertet werden?</strong><br />
+            Das schützt die Klasse und macht das Thema bearbeitbar.
+          </li>
+
+          <li>
+            <strong>Wie machst du den Einstieg interaktiv?</strong><br />
+            Interaktivität hilft, dass alle sich gemeint fühlen.
+          </li>
+
+          <li>
+            <strong>Mit welchem Satz markierst du klar den Fokus der Stunde?</strong><br />
+            Ein klarer Satz verhindert, dass es zu einer „Schönheitsdiskussion“ ohne Struktur wird.
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 4: HAUPTAKTION – BEAUTY === -->
+      <div class="badge">4. Hauptaktion (ca. 20 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🧩</span>
+          <span>Hauptaktion planen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Bilder vergleichen, Veränderungen benennen und Gefühle bewusst machen – ohne zu beschämen.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>In welcher Sozialform willst du arbeiten – und warum?</strong><br />
+            Beim Thema Körperbild ist Schutz wichtig.
+            <ul>
+              <li>Partnerarbeit – vertrauter Rahmen?</li>
+              <li>kleine Gruppen – mehr Perspektiven, aber auch mehr Risiko?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Welche Bildsets oder Beispiele sollen bearbeitet werden?</strong><br />
+            Die Auswahl entscheidet, wie konkret „Druck“ sichtbar wird.
+            <ul>
+              <li>Set aus: ungefiltertes Foto, Filter-Bild, KI-Bild?</li>
+              <li>unterschiedliche Schönheitsideale (z. B. sehr dünn, sehr muskulös)?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Welche Leitfrage gibst du für die Bearbeitung?</strong><br />
+            Eine gute Leitfrage verbindet Analyse und Gefühl.
+          </li>
+
+          <li>
+            <strong>Wie strukturierst du die Aufgabe in höchstens vier Schritten?</strong><br />
+            Struktur hilft gerade bei emotionalen Themen.
+          </li>
+
+          <li>
+            <strong>Wie begleitest du die Gruppen, ohne zu werten?</strong><br />
+            Deine Fragen können das Gespräch öffnen oder schließen.
+            <ul>
+              <li>Fragst du eher: „Was siehst du?“ statt „Findest du das schön?“</li>
+              <li>bietest du an, dass Schüler*innen Gespräche abbrechen dürfen, wenn es ihnen zu viel wird?</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 5: AUSTAUSCH & REFLEXION – BEAUTY === -->
+      <div class="badge">5. Austausch &amp; Reflexion (ca. 10 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">💬</span>
+          <span>Ergebnisse besprechen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Erfahrungen teilen, Druck sichtbar machen und gemeinsam Schutzstrategien finden.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Wie sollen die Ergebnisse präsentiert werden, ohne einzelne zu bloßstellen?</strong><br />
+            Präsentationsform = Schutz + Klarheit.
+            <ul>
+              <li>Plakate mit Stichworten statt Beispiele aus der Klasse?</li>
+              <li>Kartenwand: „Veränderungen“ und „Gefühle“ in zwei Spalten?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Welche Fragen lenken das Gespräch auf Strategien statt auf Bewertungen?</strong><br />
+            So wird aus „schön oder hässlich“ ein Reflexionsraum.
+            <ul>
+              <li>„Wo entsteht für viele von euch Druck?“</li>
+              <li>„Was hilft euch, entspannter mit solchen Bildern umzugehen?“</li>
+              <li>„Welche Sätze tun gut, welche machen es schlimmer?“</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Wie sorgst du dafür, dass auch ruhigere Schüler*innen zu Wort kommen?</strong><br />
+            Sonst sprechen nur die, die sowieso laut sind.
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 6: SICHERUNG & TRANSFER – BEAUTY === -->
+      <div class="badge">6. Sicherung &amp; Transfer (ca. 5 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">📌</span>
+          <span>Was bleibt hängen?</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Jede Person nimmt mindestens einen Satz oder eine kleine Strategie mit in den Alltag.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Mit welcher Frage machst du das Gelernte persönlich?</strong><br />
+            Eine persönliche Frage verankert die Inhalte.
+            <ul>
+              <li>„Was möchte ich mir selbst sagen, wenn ich solche Bilder sehe?“</li>
+              <li>„Was möchte ich mir in Zukunft weniger antun?“</li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Themenspezifischer Auftrag + Denkanstöße -->
+      <div class="box">
+        <div class="box-title">
+          <span class="icon">🧩</span>
+          <span>Arbeitsauftrag (themenspezifisch)</span>
+        </div>
+        <p>
+          Entwickle mit deiner Gruppe eine Unterrichtsaktion, die zeigt,
+          <strong>wie Social Media Bilder verändert – und wie das Gefühle
+          beeinflusst.</strong>
+        </p>
+        <ol>
+          <li>Welche Bildserie oder Situation willst du als Beispiel nehmen?</li>
+          <li>Welche Gefühle willst du bewusst thematisieren?</li>
+          <li>Welche 2–3 Schutzstrategien sollen die Schüler*innen am Ende kennen?</li>
+        </ol>
+        <div class="hint">
+          Hinweis: Achte auf eine wertschätzende Sprache. Ziel ist
+          Verständnis – nicht die Bewertung von Körpern oder Personen.
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">💡</span>
+          <span>Denkanstöße für deinen Einstieg</span>
+        </div>
+        <ul>
+          <li>Filter ändern nicht nur das Bild, sondern auch das Gefühl zur eigenen Person.</li>
+          <li>Viele Bilder in Feeds sind stark bearbeitet oder komplett künstlich.</li>
+          <li>Schönheitstrends werden durch Algorithmen und Vorbilder ständig wiederholt.</li>
+          <li>Jugendliche vergleichen sich oft mit etwas, das es so gar nicht gibt.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">📎</span>
+          <span>Links zu Arbeitsdokumenten</span>
+        </div>
+        <ul class="links-list">
+          <li>Bildvergleich „Real vs. Filter vs. KI“ – <a href="#">Link</a></li>
+          <li>Reflexionsbogen „Wie fühle ich mich?“ – <a href="#">Link</a></li>
+          <li>Impulsfragen zur Klassendiskussion – <a href="#">Link</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Detail Cybermobbing -->
+    <section id="detail-cybermobbing" class="detail hidden">
+      <button class="btn-secondary back-link" data-target="cybermobbing">
+        ← Zurück
+      </button>
+
+      <h2>Cybermobbing</h2>
+      <p class="detail-subtitle">
+        Wie digitale Angriffe ablaufen können – und wie du mit einer Klasse über
+        Schutz, Hilfe und Verantwortung arbeiten kannst.
+      </p>
+
+      <!-- === ZIEL + KOMPETENZEN BLOCK === -->
+      <div class="badge">1. Ziel deiner Stunde</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🎯</span>
+          <span>Formuliere dein Ziel</span>
+        </div>
+        <p>
+          Schreibe in 1–2 kurzen Sätzen auf, was die Schüler*innen am Ende deiner
+          Stunde können oder verstanden haben sollen.
+        </p>
+        <p>Beispiele:</p>
+        <ul>
+          <li>„Die Schüler*innen wissen, was Cybermobbing ist und können Beispiele nennen.“</li>
+          <li>„Die Schüler*innen erkennen typische Situationen von Cybermobbing.“</li>
+          <li>„Die Schüler*innen kennen mindestens zwei Möglichkeiten, Hilfe zu holen.“</li>
+        </ul>
+      </div>
+
+      <div class="badge">2. Wichtige Kompetenzen</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🧠</span>
+          <span>Wähle 2–3 passende Kompetenzen aus</span>
+        </div>
+        <p>Klicke auf eine Kompetenz, um zu sehen, was sie bedeutet.</p>
+
+        <div class="kompetenz-list">
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Emotionale Medienkompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, eigene Gefühle und die Gefühle anderer in Online-Situationen wahrzunehmen
+              und ernst zu nehmen.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Ethische Medienreflexion</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, zu erkennen, wann Grenzen überschritten werden – und warum
+              Respekt, Empathie und Verantwortung online wichtig sind.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Konflikt- & Handlungskompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, in schwierigen Situationen Hilfe zu holen, andere zu unterstützen
+              oder digitale Angriffe zu melden.
+            </div>
+          </div>
+
+          <div class="kompetenz-item">
+            <button class="kompetenz-btn">Technische Grundkompetenz</button>
+            <div class="kompetenz-content hidden">
+              Die Fähigkeit, Funktionen wie Blockieren, Melden, Screenshots und Privatsphäre-Einstellungen
+              sinnvoll zu nutzen.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini-Bauplan Intro -->
+      <div class="badge">Mini-Bauplan für deine Stunde</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">✅</span>
+          <span>Dein Stundenbau mit Leitfragen</span>
+        </div>
+        <p class="step-intro">
+          Die W-Fragen helfen dir, von einer „schlimmen Story“ zu einer
+          handlungsorientierten Stunde mit klaren Auswegen zu kommen.
+        </p>
+      </div>
+
+      <!-- === SCHRITT 3: EINSTIEG – CYBERMOBBING === -->
+      <div class="badge">3. Einstieg (ca. 5 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🎬</span>
+          <span>Einstieg planen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Die Klasse versteht sofort, dass es um reale Situationen aus ihrem digitalen Alltag geht.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Mit welcher Szene oder welchem Chat willst du starten?</strong><br />
+            Eine konkrete Szene macht das Thema greifbar.
+            <ul>
+              <li>Screenshot eines Gruppen-Chats (stark vereinfacht, anonymisiert)?</li>
+              <li>Kommentarspalte unter einem Bild („lustige“ Sprüche, die kippen)?</li>
+              <li>kurze erzählte Szene: „In der Klassengruppe wird ein Bild geteilt …“?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Ab wann wird aus „Spaß“ für dich Cybermobbing – und wie machst du das für die Klasse sichtbar?</strong><br />
+            Die Grenze zu markieren ist ein Lernziel.
+          </li>
+
+          <li>
+            <strong>Welche Frage stellst du, um die Perspektive der betroffenen Person zu öffnen?</strong><br />
+            Perspektivwechsel ist zentral für Empathie.
+          </li>
+
+          <li>
+            <strong>Wie schaffst du Sicherheit, damit niemand aus der Klasse bloßgestellt wird?</strong><br />
+            Sonst schweigen genau die, die betroffen sind.
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 4: HAUPTAKTION – CYBERMOBBING === -->
+      <div class="badge">4. Hauptaktion (ca. 20 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">🧩</span>
+          <span>Hauptaktion planen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Die Klasse analysiert Situationen oder entwickelt Szenen – und erarbeitet konkrete Handlungsoptionen.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>In welcher Sozialform sollen die Schüler*innen arbeiten – und warum?</strong><br />
+            Die Form bestimmt, wie offen über Belastendes gesprochen werden kann.
+            <ul>
+              <li>Kleingruppen, um verschiedene Rollen zu verteilen?</li>
+              <li>Partnerarbeit, um geschützter zu reflektieren?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Mit welchen Szenen oder Aufgaben sollen sie arbeiten?</strong><br />
+            Szenen geben Orientierung und vermeiden persönliche Bloßstellungen.
+            <ul>
+              <li>vorgegebene Chat-Szenen („Bild wird rumgeschickt“, „Beleidigungen“, „Ausschluss“)?</li>
+              <li>selbst eine Szene schreiben – aber bewusst fiktiv?</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Welche Leitfrage gibst du für die Gruppenarbeit?</strong><br />
+            Die Leitfrage entscheidet, ob es nur „Storytelling“ oder echtes Lernen wird.
+          </li>
+
+          <li>
+            <strong>Wie strukturierst du die Aufgabe in höchstens vier Schritten?</strong><br />
+            So behalten die Gruppen den Überblick.
+          </li>
+
+          <li>
+            <strong>Wie willst du in dieser Phase unterstützen – ohne die Szene zu „lösen“?</strong><br />
+            Ziel ist, dass die Schüler*innen selbst Strategien finden.
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 5: AUSTAUSCH & REFLEXION – CYBERMOBBING === -->
+      <div class="badge">5. Austausch &amp; Reflexion (ca. 10 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">💬</span>
+          <span>Ergebnisse besprechen</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Die Klasse erkennt, dass Cybermobbing viele betrifft – und dass es konkrete Handlungsmöglichkeiten gibt.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Wie sollen die Gruppen ihre Szenen oder Ideen präsentieren?</strong><br />
+            Präsentation macht deutlich, wie viele Möglichkeiten es gibt, nicht wegzuschauen.
+          </li>
+
+          <li>
+            <strong>Mit welchen Fragen lenkst du das Gespräch auf Verantwortung statt auf Schuld?</strong><br />
+            So entsteht kein „Täter*innen-Bashing“, sondern Reflexion.
+          </li>
+
+          <li>
+            <strong>Wie bringst du reale Hilfsangebote konkret ins Gespräch?</strong><br />
+            Ohne echte Anlaufstellen bleibt es bei „Man könnte mal …“.
+          </li>
+        </ul>
+      </div>
+
+      <!-- === SCHRITT 6: SICHERUNG & TRANSFER – CYBERMOBBING === -->
+      <div class="badge">6. Sicherung &amp; Transfer (ca. 5 Minuten)</div>
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">📌</span>
+          <span>Was bleibt hängen?</span>
+        </div>
+
+        <p class="step-intro">
+          Ziel: Jede Person kennt mindestens einen konkreten Schritt, den sie gehen kann – für sich oder andere.
+        </p>
+
+        <ul class="step-list">
+          <li>
+            <strong>Mit welcher Frage machst du deutlich, dass alle eine Rolle spielen?</strong><br />
+            So wird aus „Problem der anderen“ ein gemeinsames Thema.
+            <ul>
+              <li>„Was möchte ich tun, wenn ich Cybermobbing sehe?“</li>
+              <li>„Welche Rolle traue ich mir zu: Hilfe holen, trösten, unterstützen …?“</li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Wie sollen die Schüler*innen ihre persönlichen Schritte festhalten?</strong><br />
+            Konkrete Formulierungen erleichtern später das Handeln.
+            <ul>
+              <li>Kärtchen: „Mein erster Schritt wäre …“</li>
+              <li>Klassenplakat: „An wen kann ich mich wenden?“</li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Themenspezifischer Auftrag + Denkanstöße -->
+      <div class="box">
+        <div class="box-title">
+          <span class="icon">🧩</span>
+          <span>Arbeitsauftrag (themenspezifisch)</span>
+        </div>
+        <p>
+          Entwickle mit deiner Gruppe eine Unterrichtsaktion, die zeigt,
+          <strong>wie Cybermobbing aussieht – und welche Handlungsmöglichkeiten es gibt.</strong>
+        </p>
+        <ol>
+          <li>Welche typische Szene wollt ihr zeigen (fiktiv, aber realistisch)?</li>
+          <li>Welche Gefühle sollen sichtbar werden?</li>
+          <li>Welche 3 konkreten Strategien sollen die Schüler*innen am Ende kennen?</li>
+        </ol>
+        <div class="hint">
+          Hinweis: Achte darauf, dass niemand aus der Klasse bloßgestellt wird. Arbeitet mit erfundenen Szenen.
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">💡</span>
+          <span>Denkanstöße für deinen Einstieg</span>
+        </div>
+        <ul>
+          <li>Cybermobbing passiert oft im Verborgenen – aber die Folgen sind real.</li>
+          <li>„Nur ein Witz“ kann für andere sehr verletzend sein.</li>
+          <li>Nichtstun stabilisiert manchmal Mobbing-Situationen.</li>
+          <li>Hilfe zu holen ist kein Petzen, sondern Schutz.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="icon">📎</span>
+          <span>Links zu Arbeitsdokumenten</span>
+        </div>
+        <ul class="links-list">
+          <li>Fallbeispiele Cybermobbing – <a href="#">Link</a></li>
+          <li>Kontaktliste Hilfsangebote – <a href="#">Link</a></li>
+          <li>Reflexionsbogen „Meine Rolle im Chat“ – <a href="#">Link</a></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // einfache Navigation: Übersicht <-> Details
+    const overview = document.getElementById("overview");
+    const detailFake = document.getElementById("detail-fake-news");
+    const detailBeauty = document.getElementById("detail-beauty");
+    const detailCyber = document.getElementById("detail-cybermobbing");
+
+    const map = {
+      "fake-news": detailFake,
+      "beauty": detailBeauty,
+      "cybermobbing": detailCyber,
+    };
+
+    document.querySelectorAll(".open-topic").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.target;
+        overview.classList.add("hidden");
+        Object.values(map).forEach((el) => el.classList.add("hidden"));
+        map[target].classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+
+    document.querySelectorAll(".back-link").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        Object.values(map).forEach((el) => el.classList.add("hidden"));
+        overview.classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+
+    // Dropdown für Kompetenzen
+    document.querySelectorAll(".kompetenz-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const content = btn.nextElementSibling;
+        content.classList.toggle("hidden");
+      });
+    });
+  </script>
+</body>
+</html>
